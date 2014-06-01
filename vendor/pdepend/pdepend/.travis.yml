@@ -3,16 +3,14 @@ language: php
 php:
   - 5.3
   - 5.4
-  - 5.5
 
 env:
   - TEST_CONFIG="phpunit.xml.dist"
 
 before_script:
-  - composer self-update
   - composer install
 
-script: phpunit --configuration $TEST_CONFIG --colors --coverage-text
+script: phpunit --configuration $TEST_CONFIG
 
 notifications:
   irc: "irc.freenode.org#pdepend"

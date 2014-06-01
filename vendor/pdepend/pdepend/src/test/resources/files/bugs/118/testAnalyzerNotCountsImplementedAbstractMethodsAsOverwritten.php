@@ -14,6 +14,6 @@ class testAnalyzerNotCountsImplementedAbstractMethodsAsOverwritten
  */
 abstract class testAnalyzerNotCountsImplementedAbstractMethodsAsOverwrittenParent
 {
-    abstract public function foo();
+    public abstract function foo();
     public function bar() {}
 }

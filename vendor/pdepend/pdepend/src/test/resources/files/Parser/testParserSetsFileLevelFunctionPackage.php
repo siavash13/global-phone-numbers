@@ -16,7 +16,7 @@ function afunc() {
 /**
  * Function with package should be PHP_Depend::Test
  *
- * @package PDepend
+ * @package PHP_Depend
  * @subpackage Test
  */
 function cfunc() {

@@ -1,11 +1,11 @@
 #!/usr/bin/env php
 <?php
 /**
- * This file is part of PDepend.
+ * This file is part of PHP_Depend.
  *
  * PHP Version 5
  *
- * Copyright (c) 2008-2013, Manuel Pichler <mapi@pdepend.org>.
+ * Copyright (c) 2008-2012, Manuel Pichler <mapi@pdepend.org>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,35 +37,48 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * @copyright 2008-2013 Manuel Pichler. All rights reserved.
- * @license http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @category  QualityAssurance
+ * @package   PHP_Depend
+ * @author    Manuel Pichler <mapi@pdepend.org>
+ * @copyright 2008-2012 Manuel Pichler. All rights reserved.
+ * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version   SVN: $Id$
+ * @link      http://pdepend.org/
  */
-
-namespace PDepend;
 
 /**
  * Utility class that we use to recalculate the cache hash/version.
  *
- * @copyright 2008-2013 Manuel Pichler. All rights reserved.
- * @license http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @category  QualityAssurance
+ * @package   PHP_Depend
+ * @author    Manuel Pichler <mapi@pdepend.org>
+ * @copyright 2008-2012 Manuel Pichler. All rights reserved.
+ * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version   Release: @package_version@
+ * @link      http://pdepend.org/
  */
-class CacheVersionUpdater
+class PHP_Depend_CacheVersionUpdater
 {
     /**
      * The source directory.
      *
      * @var string
      */
-    private $rootDirectory = null;
+    private $_rootDirectory = null;
 
     /**
      * The source sub directories that we will process.
      *
      * @var array(string)
      */
-    private $localPaths = array(
-        '/Source',
+    private $_localPaths = array(
+        '/Builder',
+        '/Code',
         '/Metrics',
+        '/Parser',
+        '/Tokenizer',
+        '/Parser.php',
+        '/ConstantsI.php'
     );
 
     /**
@@ -73,21 +86,21 @@ class CacheVersionUpdater
      *
      * @var string
      */
-    private $targetFile = '/Util/Cache/CacheDriver.php';
+    private $_targetFile = '/Util/Cache/Driver.php';
 
     /**
      * Regular expression used to replace a previous cache version.
      *
      * @var string
      */
-    private $targetRegexp = '(@version:[a-f0-9]{32}:@)';
+    private $_targetRegexp = '(@version:[a-f0-9]{32}:@)';
 
     /**
      * Constructs a new cache version updater instance.
      */
     public function __construct()
     {
-        $this->rootDirectory = realpath(dirname(__FILE__) . '/../src/main/php/PDepend');
+        $this->_rootDirectory = realpath(dirname(__FILE__) . '/../src/main/php/PHP/Depend');
     }
 
     /**
@@ -101,17 +114,17 @@ class CacheVersionUpdater
     {
         $checksum = '';
 
-        foreach ($this->localPaths as $localPath) {
-            $path = $this->rootDirectory . $localPath;
+        foreach ($this->_localPaths as $localPath) {
+            $path = $this->_rootDirectory . $localPath;
             foreach ($this->readFiles($path) as $file) {
                 $checksum = $this->hash($file, $checksum);
             }
         }
 
-        $file = $this->rootDirectory . $this->targetFile;
+        $file = $this->_rootDirectory . $this->_targetFile;
 
         $code = file_get_contents($file);
-        $code = preg_replace($this->targetRegexp, "@version:{$checksum}:@", $code);
+        $code = preg_replace($this->_targetRegexp, "@version:{$checksum}:@", $code);
         file_put_contents($file, $code);
     }
 
@@ -119,8 +132,9 @@ class CacheVersionUpdater
      * Generates a hash value for the given <b>$path</b> in combination with a
      * previous calculated <b>$checksum</b>.
      *
-     * @param string $path Path to the current context file.
+     * @param string $path     Path to the current context file.
      * @param string $checksum Hash/Checksum for all previously parsed files.
+     *
      * @return string
      */
     protected function hash($path, $checksum)
@@ -132,6 +146,7 @@ class CacheVersionUpdater
      * Reads all files below the given <b>$path</b>.
      *
      * @param string $path The parent directory or a file.
+     *
      * @return array(string)
      */
     protected function readFiles($path)
@@ -152,6 +167,7 @@ class CacheVersionUpdater
      * Does the given path represent a file that has the expected file extension?
      *
      * @param string $path Path to a file or directory.
+     *
      * @return boolean
      */
     protected function accept($path)
@@ -163,12 +179,13 @@ class CacheVersionUpdater
      * Creates an iterator with all files below the given directory.
      *
      * @param string $path Path to a directory.
-     * @return \Iterator
+     *
+     * @return Iterator
      */
     protected function createFileIterator($path)
     {
-        return new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($path)
+        return new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path)
         );
     }
 
@@ -176,13 +193,12 @@ class CacheVersionUpdater
      * The main method starts the cache version updater.
      *
      * @param array $args Cli arguments.
-     * @return void
      */
     public static function main(array $args)
     {
-        $updater = new CacheVersionUpdater();
+        $updater = new PHP_Depend_CacheVersionUpdater();
         $updater->run();
     }
 }
 
-CacheVersionUpdater::main($_SERVER['argv']);
+PHP_Depend_CacheVersionUpdater::main($argv);

@@ -1,6 +1,6 @@
 <?php
 function foo()
 {
-    \PDepend\Parser::$prop;
+    \PHP\Depend\Parser::$prop;
 }
 ?>

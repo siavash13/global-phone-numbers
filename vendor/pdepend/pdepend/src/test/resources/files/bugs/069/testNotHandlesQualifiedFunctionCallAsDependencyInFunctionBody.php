@@ -1,6 +1,6 @@
 <?php
 function foo()
 {
-    \PDepend\Parser\call();
+    \PHP\Depend\Parser\call();
 }
 ?>
