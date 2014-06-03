@@ -9,4 +9,11 @@ return array(
     $vendorDir . '/pdepend/pdepend/src/main/php',
     $vendorDir . '/phpmd/phpmd/src/main/php',
     $vendorDir . '/phpunit/php-timer',
+    $vendorDir . '/phpunit/php-text-template',
+    $vendorDir . '/phpunit/phpunit-mock-objects',
+    $vendorDir . '/phpunit/php-token-stream',
+    $vendorDir . '/phpunit/php-file-iterator',
+    $vendorDir . '/phpunit/php-code-coverage',
+    $vendorDir . '/phpunit/phpunit',
+    $vendorDir . '/symfony/yaml',
 );

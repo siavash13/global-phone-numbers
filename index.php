@@ -1,5 +1,9 @@
 <?php
+    require 'client.php';
     require 'lib\Countries.php';
+    require_once 'lib\DBConfig.php';
+
+    use MSISDN\DB\DBConfig;
     use MSISDN\Country_codes\Countries;
 
     $number = "12345566";
@@ -26,3 +30,9 @@ function getNumberDetail($number, $countriesCodes)
         }
     }
 }
+
+$db = new DBconfig();
+$db->createDB();
+$client = new client();
+
+
