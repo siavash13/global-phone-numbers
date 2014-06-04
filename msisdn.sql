@@ -1,58 +1,42 @@
-<?php
-namespace MSISDN\DB;
+-- phpMyAdmin SQL Dump
+-- version 4.1.6
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2014 at 10:35 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
 
-class DBConfig {
-    
-    private $con;
-    
-    public function __construct(){
-        $this->con = mysqli_connect("localhost","root","");
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-    }
-    
-     public function createDB(){
-        $sql="CREATE DATABASE IF NOT EXISTS MSISDN;";               
-        if (mysqli_query($this->con,$sql)) {
-            // echo "Database my_db created successfully";
-            return TRUE;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return FALSE;
-        }          
-    }
-    
-    public function createTable(){        
-        
-        $command="mysql -h localhost -u 'root' -p '' 
-                'msisdn' < 'msisdn.sql' ";
-        $output = shell_exec($command);
-        
-        
-        /*
-        $this->con = mysqli_connect("localhost","root","","MSISDN");
-        $sqlCreate = "
-            CREATE TABLE IF NOT EXISTS `prefix` (
-                `id` int(11) NOT NULL AUTO_INCREMENT,
-                `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-                `code` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-                PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40142;
-            ";
-        if (mysqli_query($this->con,$sqlCreate)) {
-            // echo "Database my_db created successfully";
-            return TRUE;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return FALSE;
-        } 
-         * 
-         */  
-    }
-        
-    public function insertData(){
-        $sqlInsert = "
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `msisdn`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prefix`
+--
+
+CREATE TABLE IF NOT EXISTS `prefix` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40142 ;
+
+--
+-- Dumping data for table `prefix`
+--
+
 INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (1, 'name', 'code'),
 (2, 'Afghanistan', '93'),
@@ -1501,7 +1485,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (1445, 'Bolivia-Equal Access', '59126128'),
 (1446, 'Bolivia-Equal Access', '59126129'),
 (1447, 'Bolivia-Equal Access', '59126130'),
-(1448, 'Bolivia-Equal Access', '59126131'),
+(1448, 'Bolivia-Equal Access', '59126131');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (1449, 'Bolivia-Equal Access', '5912614'),
 (1450, 'Bolivia-Equal Access', '59126178'),
 (1451, 'Bolivia-Equal Access', '59126179'),
@@ -2784,7 +2769,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (2728, 'Bulgaria-OLO', '35931238'),
 (2729, 'Bulgaria-OLO', '3593134'),
 (2730, 'Bulgaria-OLO', '35931439'),
-(2731, 'Bulgaria-OLO', '35931459'),
+(2731, 'Bulgaria-OLO', '35931459');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (2732, 'Bulgaria-OLO', '35931517'),
 (2733, 'Bulgaria-OLO', '35931518'),
 (2734, 'Bulgaria-OLO', '35931519'),
@@ -4160,7 +4146,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (4104, 'Colombia-Lex', '574776'),
 (4105, 'Colombia-Lex', '574777'),
 (4106, 'Colombia-Lex', '574778'),
-(4107, 'Colombia-Lex', '574779'),
+(4107, 'Colombia-Lex', '574779');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (4108, 'Colombia-Lex', '574791'),
 (4109, 'Colombia-Lex', '574792'),
 (4110, 'Colombia-Lex', '574795'),
@@ -5823,7 +5810,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (26382, 'USA-High', '1330658'),
 (26383, 'USA-High', '1330681'),
 (26384, 'USA-High', '1330787'),
-(26385, 'USA-High', '1330816'),
+(26385, 'USA-High', '1330816');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (26386, 'USA-High', '1330930'),
 (26387, 'USA-High', '1330952'),
 (26388, 'USA-High', '1330953'),
@@ -7487,7 +7475,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (28046, 'USA-High', '1484405'),
 (28047, 'USA-High', '1484407'),
 (28048, 'USA-High', '1484409'),
-(28049, 'USA-High', '1484442'),
+(28049, 'USA-High', '1484442');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (28050, 'USA-High', '1484450'),
 (28051, 'USA-High', '1484454'),
 (28052, 'USA-High', '1484469'),
@@ -9151,7 +9140,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (29710, 'USA-High', '1570843'),
 (29711, 'USA-High', '1570853'),
 (29712, 'USA-High', '1570859'),
-(29713, 'USA-High', '1570864'),
+(29713, 'USA-High', '1570864');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (29714, 'USA-High', '1570868'),
 (29715, 'USA-High', '1570869'),
 (29716, 'USA-High', '1570870'),
@@ -10815,7 +10805,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (31374, 'USA-High', '1620539'),
 (31375, 'USA-High', '1620545'),
 (31376, 'USA-High', '1620546'),
-(31377, 'USA-High', '1620547'),
+(31377, 'USA-High', '1620547');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (31378, 'USA-High', '1620548'),
 (31379, 'USA-High', '1620563'),
 (31380, 'USA-High', '1620575'),
@@ -12479,7 +12470,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (33038, 'USA-High', '1724867'),
 (33039, 'USA-High', '1724868'),
 (33040, 'USA-High', '1724874'),
-(33041, 'USA-High', '1724883'),
+(33041, 'USA-High', '1724883');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (33042, 'USA-High', '1724885'),
 (33043, 'USA-High', '1724893'),
 (33044, 'USA-High', '1724898'),
@@ -14143,7 +14135,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (34702, 'USA-High', '1843288'),
 (34703, 'USA-High', '1843293'),
 (34704, 'USA-High', '1843294'),
-(34705, 'USA-High', '1843295'),
+(34705, 'USA-High', '1843295');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (34706, 'USA-High', '1843301'),
 (34707, 'USA-High', '1843304'),
 (34708, 'USA-High', '1843322'),
@@ -15807,7 +15800,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (36366, 'USA-High', '1985718'),
 (36367, 'USA-High', '1985724'),
 (36368, 'USA-High', '1985742'),
-(36369, 'USA-High', '1985746'),
+(36369, 'USA-High', '1985746');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (36370, 'USA-High', '1985787'),
 (36371, 'USA-High', '1985795'),
 (36372, 'USA-High', '1985798'),
@@ -17208,7 +17202,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (37767, 'USA-Ultra High', '1540350'),
 (37768, 'USA-Ultra High', '1540363'),
 (37769, 'USA-Ultra High', '1540396'),
-(37770, 'USA-Ultra High', '1540468'),
+(37770, 'USA-Ultra High', '1540468');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (37771, 'USA-Ultra High', '1540474'),
 (37772, 'USA-Ultra High', '1540499'),
 (37773, 'USA-Ultra High', '1540712'),
@@ -18595,7 +18590,8 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (39154, 'USA-Ultra High', '1806842'),
 (39155, 'USA-Ultra High', '1806847'),
 (39156, 'USA-Ultra High', '1806864'),
-(39157, 'USA-Ultra High', '1806873'),
+(39157, 'USA-Ultra High', '1806873');
+INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (39158, 'USA-Ultra High', '1806879'),
 (39159, 'USA-Ultra High', '1806889'),
 (39160, 'USA-Ultra High', '1806895'),
@@ -19580,18 +19576,7 @@ INSERT INTO `prefix` (`id`, `name`, `code`) VALUES
 (40139, 'ISDN-Uruguay', 'IS598'),
 (40140, 'ISDN-USA', 'IS1'),
 (40141, 'ISDN-Vietnam', 'IS84');
-";
-       if (mysqli_query($this->con,$sqlInsert)) {
-            // echo "Database my_db created successfully";
-            return TRUE;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return FALSE;
-        }     
-        
-        
-    }
-    
-}
 
-?>
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

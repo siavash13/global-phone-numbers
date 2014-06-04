@@ -20,7 +20,7 @@ class Main
         $this->db = new DBConfig();
         $this->db->createDB();
         $this->db->createTable();
-        $this->db->insertData();
+       // $this->db->insertData();
     }
  
     public function test($param){
