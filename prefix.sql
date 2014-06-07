@@ -1,35 +1,31 @@
-<?php
-namespace MSISDN\DB;
+-- phpMyAdmin SQL Dump
+-- version 4.1.6
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2014 at 12:56 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
 
-class DBConfig
-{
-    
-    private $con;
-    
-    public function __construct()
-    {
-        $this->con = mysqli_connect("localhost", "root", "");
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-    }
-    
-    public function createDB()
-    {
-        $sql="CREATE DATABASE IF NOT EXISTS MSISDN;";
-        if (mysqli_query($this->con, $sql)) {
-            // echo "Database my_db created successfully";
-            return true;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return false;
-        }
-    }
-    
-    public function createTable()
-    {
-        $this->con = mysqli_connect("localhost", "root", "", "MSISDN");
-        $sqlCreate = " 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `msisdn`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prefix`
+--
+
 CREATE TABLE IF NOT EXISTS `prefix` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `country_code` varchar(6) DEFAULT NULL,
@@ -38,19 +34,13 @@ CREATE TABLE IF NOT EXISTS `prefix` (
   `operator_name` varchar(102) DEFAULT NULL,
   `first_digits` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1756 ;";
-        if (mysqli_query($this->con, $sqlCreate)) {
-            // echo "Database my_db created successfully";
-            return true;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return false;
-        }
-    }
-        
-    public function insertData()
-    {
-        $sqlInsert = "INSERT INTO `prefix` (`id`, `country_code`, `country_name`, `country_dial_code`, `operator_name`, `first_digits`) VALUES
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1756 ;
+
+--
+-- Dumping data for table `prefix`
+--
+
+INSERT INTO `prefix` (`id`, `country_code`, `country_name`, `country_dial_code`, `operator_name`, `first_digits`) VALUES
 (1, 'ab', 'Abkhazia', '7', 'A-Mobile', '788'),
 (2, 'ab', 'Abkhazia', '7', 'A-Mobile', '768'),
 (3, 'ab', 'Abkhazia', '7', 'Aquafon', '767'),
@@ -948,20 +938,8 @@ CREATE TABLE IF NOT EXISTS `prefix` (
 (895, 'mu', 'Mauritius', '230', 'Emtel Ltd', '23010'),
 (896, 'mu', 'Mauritius', '230', 'Mahanagar Telephone', '2302'),
 (897, 'mu', 'Mauritius', '230', 'Mahanagar Telephone', '2303');
-";
-       if (mysqli_query($this->con, $sqlInsert)) {
-            // echo "Database my_db created successfully";
-            return true;
-       } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return false;
-        }
-    }
-    
-    public function inserData2()
-    {
-         $sqlInsert = "INSERT INTO `prefix` (`id`, `country_code`, `country_name`, `country_dial_code`, `operator_name`, `first_digits`) VALUES 
-              (898, 'mu', 'Mauritius', '230', 'Orange/Cellplus', '2301'),
+INSERT INTO `prefix` (`id`, `country_code`, `country_name`, `country_dial_code`, `operator_name`, `first_digits`) VALUES
+(898, 'mu', 'Mauritius', '230', 'Orange/Cellplus', '2301'),
 (899, 'mx', 'Mexico', '52', 'Axtel', '520'),
 (900, 'mx', 'Mexico', '52', 'IUSACell/UneFon', '5250'),
 (901, 'mx', 'Mexico', '52', 'IUSACell/UneFon', '5250'),
@@ -1763,30 +1741,8 @@ CREATE TABLE IF NOT EXISTS `prefix` (
 (1697, 'zm', 'Zambia', '260', 'Zain/Celtel', '2601'),
 (1698, 'zw', 'Zimbabwe', '263', 'Econet', '2634'),
 (1699, 'zw', 'Zimbabwe', '263', 'Net One', '2631'),
-(1700, 'zw', 'Zimbabwe', '263', 'Telecel', '2633')";
+(1700, 'zw', 'Zimbabwe', '263', 'Telecel', '2633');
 
-        if (mysqli_query($this->con, $sqlInsert)) {
-            // echo "Database my_db created successfully";
-            return true;
-        } else {
-           // echo "Error creating database: " . mysqli_error($con);
-            return false;
-        }
-    }
-    
-    public function getData($number){      
-        $this->con = mysqli_connect("localhost", "root", "", "MSISDN");
-        $result = mysqli_query($this->con, "select t.* from prefix t where
-            $number like concat(t.first_digits, '%') order by length(t.first_digits) desc limit 1");
-        $row = mysqli_fetch_array($result);        
-        return $row;
-    }
-    
-    public function getById($id){
-        $this->con = mysqli_connect("localhost", "root", "", "MSISDN");
-        $result = mysqli_query($this->con, "select t.* from prefix t where
-            id = $id");
-        $row = mysqli_fetch_array($result);        
-        return $row;
-    }
- }
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

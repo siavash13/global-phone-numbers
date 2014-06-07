@@ -17,17 +17,26 @@ class Main
     {
         $this->countries = new Countries();
         $this->countriesCodes = $this->countries->getCountryInformation();
+        /*
         $this->db = new DBConfig();
         $this->db->createDB();
         $this->db->createTable();
-       // $this->db->insertData();
+        $this->db->insertData();
+        $this->db->inserData2();
+         * 
+         */
     }
  
-    public function test($param){
-        return $param;
+    public function test(){
+        return "hi ";
     }       
+    
+    public function getData($number){
+        $this->db = new DBConfig();
+        return $this->db->getData($number);    
+    }
 
-        public function getNumberDetail($number)
+    public function getNumberDetail($number)
     {   
         $result = array();
         $found = FALSE;
@@ -40,8 +49,8 @@ class Main
             } else {
                 $result['found'] = FALSE;
             }            
-        }
-        
+        }        
         return $result;
     }
+       
 }
