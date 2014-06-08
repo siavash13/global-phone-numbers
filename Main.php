@@ -8,10 +8,9 @@ use MSISDN\DB\DBConfig;
 
 class Main
 {
-    private $number;
     private $countries;
     private $countriesCodes;
-    private $db;    
+    private $db;
 
     public function __construct()
     {
@@ -26,31 +25,27 @@ class Main
          * 
          */
     }
- 
-    public function test(){
-        return "hi ";
-    }       
     
-    public function getData($number){
+    public function getData($number)
+    {
         $this->db = new DBConfig();
-        return $this->db->getData($number);    
+        return $this->db->getData($number);
     }
 
     public function getNumberDetail($number)
-    {   
+    {
         $result = array();
-        $found = FALSE;
-        for ($i = 1; $i < 5 && $found == FALSE; ++$i) {                     
+        $found = false;
+        for ($i = 1; $i < 5 && $found == false; ++$i) {
             if (array_key_exists(substr($number, 0, $i), $this->countriesCodes)) {
-                $result['found'] = TRUE;
+                $result['found'] = true;
                 $result['country_code'] = substr($number, 0, $i);
-                $result['number'] =  substr($number, $i, strlen($number));  
-                $found = TRUE;
+                $result['number'] =  substr($number, $i, strlen($number));
+                $found = true;
             } else {
-                $result['found'] = FALSE;
-            }            
-        }        
+                $result['found'] = false;
+            }
+        }
         return $result;
     }
-       
 }

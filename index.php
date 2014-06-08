@@ -10,8 +10,6 @@
     $db->createTable();
     $db->insertData();
     $db->inserData2();
-
-
 //$client = new client("38640123456");
 ?>
 <form method="get" action="compute.php">

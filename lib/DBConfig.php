@@ -949,10 +949,10 @@ CREATE TABLE IF NOT EXISTS `prefix` (
 (896, 'mu', 'Mauritius', '230', 'Mahanagar Telephone', '2302'),
 (897, 'mu', 'Mauritius', '230', 'Mahanagar Telephone', '2303');
 ";
-       if (mysqli_query($this->con, $sqlInsert)) {
+        if (mysqli_query($this->con, $sqlInsert)) {
             // echo "Database my_db created successfully";
             return true;
-       } else {
+        } else {
            // echo "Error creating database: " . mysqli_error($con);
             return false;
         }
@@ -1774,19 +1774,25 @@ CREATE TABLE IF NOT EXISTS `prefix` (
         }
     }
     
-    public function getData($number){      
+    public function getData($number)
+    {
         $this->con = mysqli_connect("localhost", "root", "", "MSISDN");
-        $result = mysqli_query($this->con, "select t.* from prefix t where
-            $number like concat(t.first_digits, '%') order by length(t.first_digits) desc limit 1");
-        $row = mysqli_fetch_array($result);        
+        $result = mysqli_query(
+            $this->con,
+            "select t.* from prefix t where $number like concat(t.first_digits, '%') order by length(t.first_digits) desc limit 1"
+        );
+        $row = mysqli_fetch_array($result);
         return $row;
     }
     
-    public function getById($id){
+    public function getById($id)
+    {
         $this->con = mysqli_connect("localhost", "root", "", "MSISDN");
-        $result = mysqli_query($this->con, "select t.* from prefix t where
-            id = $id");
-        $row = mysqli_fetch_array($result);        
+        $result = mysqli_query(
+            $this->con,
+            "select t.* from prefix t where id = $id"
+        );
+        $row = mysqli_fetch_array($result);
         return $row;
     }
- }
+}
