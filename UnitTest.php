@@ -1,12 +1,9 @@
 <?php
-namespace MSISDN\Test;
-
 require_once './lib/DBConfig.php';
 use MSISDN\DB\DBConfig;
 
 class UnitTest extends PHPUnit_Framework_TestCase
 {
- 
     public function testDBData()
     {
         $db = new DBConfig();
