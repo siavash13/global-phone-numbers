@@ -6,7 +6,6 @@
  */
 namespace MSISDN\Country_codes;
 
-
 class Countries
 {      
        private $countries = array();

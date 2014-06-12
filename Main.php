@@ -1,9 +1,8 @@
 <?php
 namespace MSISDN\Tool;
 
-require 'lib\Countries.php';
-require 'lib\DBConfig.php';
-use MSISDN\DB\DBConfig;
+require 'lib\DBConfig2.php';
+use MSISDN\DB\DBConfig2;
 
 class Main
 {
@@ -11,12 +10,11 @@ class Main
 
     public function __construct()
     {
-        
+         $this->db = new DBConfig2();
     }
 
     public function getData($number)
     {
-        $this->db = new DBConfig();
         return $this->db->getData($number);
     }
 }

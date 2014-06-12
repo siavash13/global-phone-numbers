@@ -1,12 +1,14 @@
 <?php
-require_once './lib/DBConfig.php';
-use MSISDN\DB\DBConfig;
+namespace MSISDN\unitTest;
 
-class UnitTest extends PHPUnit_Framework_TestCase
+require_once './lib/DBConfig2.php';
+use MSISDN\DB\DBConfig2;
+
+class UnitTest extends \PHPUnit_Framework_TestCase
 {
     public function testDBData()
     {
-        $db = new DBConfig();
+        $db = new DBConfig2();
         $randomNumber  = rand(1, 1700);
         $randomRow = $db->getById($randomNumber);
         $prefix_code = $randomRow['first_digits'];
