@@ -1,21 +1,28 @@
 <?php
 namespace MSISDN\DB;
 
+
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This class handles database creation and also 
+ * queries to dagtabase 
  * 
+ * @mysql mysqli object
  */  
 class DBConfig2
 {
-    
     private $mysqli;
     
     public function __construct()
     {
-         $this->mysqli = new \mysqli("localhost", "root", "", "msisdn");
+         include  'lib'.DIRECTORY_SEPARATOR. 'Config.php';
+         $this->mysqli = new \mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     }
     
+    /***
+     * This function create the table if not exists
+     * 
+     * @sql the query that import data into table
+     ***/
     public function createTable()
     {
         $sql = file_get_contents("lib\msisdn.sql");
@@ -25,8 +32,14 @@ class DBConfig2
         }
     }
 
-    
-
+     /***
+     * This function takes a phone number as input and returns details 
+     * relating to it as output
+     * 
+     * @number the phone number
+     * @row the record that fetched from table which holds phone number
+     *      details 
+     ***/
     public function getData($number)
     {
         $result = $this->mysqli->query(
@@ -37,6 +50,14 @@ class DBConfig2
         return $row;
     }
     
+    /***
+     * This function takes an id as input and returns details of the
+     * record with that id
+     * 
+     * @id the id of row in prefix table
+     * @row the record that fetched from table which id is @id
+     *      details 
+     ***/
     public function getById($id)
     {
         $result = $this->mysqli->query(
