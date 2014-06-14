@@ -14,7 +14,8 @@ class php
         "libapache2-mod-php5",
         "php5-xdebug",
         "php5-memcache",
-        "php5-memcached"
+        "php5-memcached",
+		"php-codesniffer"
     ]
 
     package
