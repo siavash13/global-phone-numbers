@@ -13,4 +13,11 @@ class composer
 		unless => "[ -f /usr/local/bin/composer ]"
 	}
 		
+    exec { 'install php check scripts':
+        command => "/bin/sh -c 'cd /var/www/ && composer install'",
+		require => [Exec['global composer']],
+        onlyif => [ "test -f /var/www/composer.json" ],
+        creates => "/var/www/vendor/autoload.php",
+        timeout => 900,
+	}
 }
