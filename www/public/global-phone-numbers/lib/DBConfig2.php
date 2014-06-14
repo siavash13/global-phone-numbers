@@ -24,7 +24,7 @@ class DBConfig2
      ***/
     public function createTable()
     {
-        $sql = file_get_contents("lib\msisdn.sql");
+        $sql = file_get_contents("lib".DIRECTORY_SEPARATOR."msisdn.sql");
         $this->mysqli->multi_query($sql);
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
