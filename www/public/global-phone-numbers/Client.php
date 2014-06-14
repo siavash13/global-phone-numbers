@@ -24,7 +24,8 @@ class Client
     public function __construct($param)
     {
         require_once  'remote/jsonrpcphp/includes/jsonRPCClient.php';
-        $this->remoteMain = new \jsonRPCClient('http://localhost/global-phone-numbers/MainRPC.php');
+        $url = 'http://localhost/'.dirname($_SERVER['PHP_SELF']).'/MainRPC.php';
+        $this->remoteMain = new \jsonRPCClient($url);        
         $this->result = $this->remoteMain->getData($param);
         $this->number = $param;
         $this->country_code = $this->result['country_dial_code'];
