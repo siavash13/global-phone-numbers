@@ -11,7 +11,14 @@ require 'client.php';
 use MSISDN\client\Client;
 
 $number = $_GET['number'];
-$client = new Client($number);
+try {
+    $client = new Client($number);
+} catch (\Exception $exception) {
+    echo 'Something went wrong with number';
+    echo $exception->getMessage();
+    exit();
+}
+$client->printsTheResult();
 ?>
 <br />
 <a href="index.php" >Back to Home</a>
