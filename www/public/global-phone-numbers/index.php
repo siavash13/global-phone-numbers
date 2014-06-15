@@ -1,5 +1,6 @@
 <?php
-    /***
+   
+     /***
      *This file is the main entrance of the app
      * at the start it creates a table and fill
      * it with data 
