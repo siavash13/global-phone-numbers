@@ -22,7 +22,7 @@ exec
 
 exec
 {
-    'dos2unix checks.sh':
+    'dos2unix tests.sh':
         command => 'dos2unix /var/www/public/global-phone-numbers/tests.sh',
         require => Exec['apt-get install dos2unix']
 }
@@ -36,35 +36,35 @@ exec
 
 exec
 {
-    'dos2unix callRpc.php':
+    'dos2unix Main.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/Main.php',
         require => Exec['apt-get install dos2unix']
 }
 
 exec
 {
-    'dos2unix dbConfig.php':
+    'dos2unix MainRPC.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/MainRPC.php',
         require => Exec['apt-get install dos2unix']
 }
 
 exec
 {
-    'dos2unix DbModel.php':
+    'dos2unix Client.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/Client.php',
         require => Exec['apt-get install dos2unix']
 }
 
 exec
 {
-    'dos2unix NumberLookup.php':
+    'dos2unix index.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/index.php',
         require => Exec['apt-get install dos2unix']
 }
 
 exec
 {
-    'dos2unix rpcIndex.php':
+    'dos2unix compute.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/compute.php',
         require => Exec['apt-get install dos2unix']
 }
@@ -72,7 +72,7 @@ exec
 
 exec
 {
-    'dos2unix rpcIndex.php':
+    'dos2unix UnitTest.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/UnitTest.php',
         require => Exec['apt-get install dos2unix']
 }
@@ -80,7 +80,7 @@ exec
 
 exec
 {
-    'dos2unix rpcIndex.php':
+    'dos2unix Config.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/lib/Config.php',
         require => Exec['apt-get install dos2unix']
 }
@@ -88,7 +88,7 @@ exec
 
 exec
 {
-    'dos2unix rpcIndex.php':
+    'dos2unix DBConfig2.php':
         command => 'dos2unix /var/www/public/global-phone-numbers/lib/DBConfig2.php',
         require => Exec['apt-get install dos2unix']
 }
