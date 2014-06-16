@@ -99,5 +99,4 @@ include php
 include apache
 include mysql
 include phpmyadmin
-include memcached
 include composer
