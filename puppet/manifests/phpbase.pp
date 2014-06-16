@@ -93,14 +93,11 @@ exec
         require => Exec['apt-get install dos2unix']
 }
 
-include bootstrap
 include other #curl
 include php55 #specific setup steps for 5.5
 include php
 include apache
 include mysql
 include phpmyadmin
-include beanstalkd
-include redis
 include memcached
 include composer
