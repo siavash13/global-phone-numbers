@@ -1,7 +1,7 @@
 <?php
 /***
  * Creating object of RPCClient and passing the
- * phone number is done in this file
+ * phone number to it is done inside this file
  *
  * @number the phone number passed from index.php
  * @client  Client object

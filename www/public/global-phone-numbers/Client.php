@@ -7,7 +7,8 @@ namespace MSISDN\client;
  * and printing out the result
  *
  * @remoteMain   jsonRPCClient object
- * @country_code country dialing code
+ * @country_code variable holds country code ex : US
+ * @number       variable holds the phone number
  */
 
 class Client
@@ -33,7 +34,7 @@ class Client
     
     public function printsTheResult()
     {
-        //first line prints out the number by substracting the code length from the input
+        //prints out the number without country dialing code( substracting the code length from the number)
         echo 'number is : '. substr($this->number, strlen($this->country_code), strlen($this->number));
         echo $this->result['country_code'] . ', ' . $this->result['operator_name']. ', '
              . $this->country_code . ', ' . substr($this->number, strlen($this->country_code), strlen($this->number))

@@ -7,7 +7,7 @@ use MSISDN\DB\DBConfig2;
  * This serving the the main functionality
  * such as getting number and finds it details
  * 
- * @db DBConfig2 object
+ * @dbConnection DBConfig2 object
  */
 class Main
 {

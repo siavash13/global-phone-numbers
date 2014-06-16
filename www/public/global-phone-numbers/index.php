@@ -1,13 +1,16 @@
 <?php
    
      /***
-     *This file is the main entrance of the app
+     * This file is the main entrance of the app
      * at the start it creates a table and fill
      * it with data 
      *      
      * it displays an inputt field which is for 
      * getting the phone number from user
      * 
+     * User will input a number and the number will 
+     * be passed to the compute.php file 
+     *  
      * @db DBConfig2 object, creates table in DB
      ***/
 
